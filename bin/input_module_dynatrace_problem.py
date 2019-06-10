@@ -47,15 +47,20 @@ def collect_events(helper, ew):
     
     opt_dynatrace_api_token = helper.get_arg('dynatrace_api_token')
     opt_dynatrace_collection_interval = helper.get_arg('dynatrace_collection_interval')
+    opt_dynatrace_tags = helper.get_arg('dynatrace_tags')
 
     headers     = {'Authorization': 'Api-Token {}'.format(opt_dynatrace_api_token),
                     'version':'Splunk TA 1.0.3'}
-    api_url     = opt_dynatrace_tenant + '/api/v1/problem/feed' + '?relativeTime=' + opt_dynatrace_collection_interval    
+    api_url     = opt_dynatrace_tenant + '/api/v1/problem/feed'
+    parameters  = {'relativeTime': opt_dynatrace_collection_interval}
     problem_url = opt_dynatrace_tenant + '/api/v1/problem/details/'
-    
+
+    if opt_dynatrace_tags:
+        parameters ['tag'] = opt_dynatrace_tags.split("&")
+
     #helper.log_debug("url: " + url)
  
-    response = helper.send_http_request(api_url, "GET", headers=headers,  parameters=None, payload=None, cookies=None, verify=verify_ssl, cert=None, timeout=None, use_proxy=True)
+    response = helper.send_http_request(api_url, "GET", headers=headers,  parameters=parameters, payload=None, cookies=None, verify=verify_ssl, cert=None, timeout=None, use_proxy=True)
     try:
         response.raise_for_status()
     except:

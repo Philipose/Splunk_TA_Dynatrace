@@ -59,7 +59,15 @@ class ModInputdynatrace_entity(modinput_wrapper.base_modinput.BaseModInput):
                                          required_on_create=True,
                                          required_on_edit=False))
         scheme.add_argument(smi.Argument("dynatrace_management_zone", title="Management Zone",
-                                         description="Filter Data by Management Zones.",
+                                         description="Management Zone the entity belongs to",
+                                         required_on_create=False,
+                                         required_on_edit=False))
+        scheme.add_argument(smi.Argument("dynatrace_tags", title="Tags",
+                                         description="Returns entities must have all provided tags (Seperated by ampersand)",
+                                         required_on_create=False,
+                                         required_on_edit=False))
+        scheme.add_argument(smi.Argument("dynatrace_entities", title="Entities",
+                                         description="Returns entities must have any provided Dynatrace entity IDs (Seperated by ampersand)",
                                          required_on_create=False,
                                          required_on_edit=False))
         scheme.add_argument(smi.Argument("entity_endpoints", title="Entity Endpoints",

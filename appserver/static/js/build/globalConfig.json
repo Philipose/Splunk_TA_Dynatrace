@@ -238,6 +238,38 @@
                             "label": "Dynatrace API Token", 
                             "encrypted": true, 
                             "type": "text"
+                        },
+                        {
+                            "help": "Tag Filter",
+                            "required": false,
+                            "validators": [
+                                {
+                                    "errorMsg": "Max length of password is 8192",
+                                    "minLength": 0,
+                                    "maxLength": 8192,
+                                    "type": "string"
+                                }
+                            ],
+                            "field": "dynatrace_tags",
+                            "label": "Dynatrace Tags",
+                            "encrypted": false,
+                            "type": "text"
+                        },
+                        {
+                            "help": "Entity Filter",
+                            "required": false,
+                            "validators": [
+                                {
+                                    "errorMsg": "Max length of password is 8192",
+                                    "minLength": 0,
+                                    "maxLength": 8192,
+                                    "type": "string"
+                                }
+                            ],
+                            "field": "dynatrace_entities",
+                            "label": "Dynatrace Entities",
+                            "encrypted": false,
+                            "type": "text"
                         }, 
                         {
                             "help": "Relative timeframe passed to Dynatrace API. Timeframe of data to be collected at each polling interval.", 
@@ -380,6 +412,38 @@
                             "encrypted": true, 
                             "type": "text"
                         }, 
+                        {
+                            "help": "Tag Filter",
+                            "required": false,
+                            "validators": [
+                                {
+                                    "errorMsg": "Max length of password is 8192",
+                                    "minLength": 0,
+                                    "maxLength": 8192,
+                                    "type": "string"
+                                }
+                            ],
+                            "field": "dynatrace_tags",
+                            "label": "Dynatrace Tags",
+                            "encrypted": false,
+                            "type": "text"
+                        },
+                        {
+                            "help": "Entity Filter",
+                            "required": false,
+                            "validators": [
+                                {
+                                    "errorMsg": "Max length of password is 8192",
+                                    "minLength": 0,
+                                    "maxLength": 8192,
+                                    "type": "string"
+                                }
+                            ],
+                            "field": "dynatrace_entities",
+                            "label": "Dynatrace Entities",
+                            "encrypted": false,
+                            "type": "text"
+                        },
                         {
                             "help": "Relative timeframe passed to Dynatrace API. Timeframe of data to be collected at each polling interval.", 
                             "field": "dynatrace_collection_interval", 
@@ -564,6 +628,22 @@
                             "type": "text"
                         }, 
                         {
+                            "help": "Tag Filter",
+                            "required": false,
+                            "validators": [
+                                {
+                                    "errorMsg": "Max length of password is 8192",
+                                    "minLength": 0,
+                                    "maxLength": 8192,
+                                    "type": "string"
+                                }
+                            ],
+                            "field": "dynatrace_tags",
+                            "label": "Dynatrace Tags",
+                            "encrypted": false,
+                            "type": "text"
+                        },
+                        {
                             "help": "Relative timeframe passed to Dynatrace API. Timeframe of data to be collected at each polling interval.", 
                             "field": "dynatrace_collection_interval", 
                             "options": {
@@ -713,6 +793,38 @@
                             ],
                             "field": "dynatrace_management_zone",
                             "label": "Dynatrace Management Zone",
+                            "encrypted": false,
+                            "type": "text"
+                        },
+                        {
+                            "help": "Tag Filter",
+                            "required": false,
+                            "validators": [
+                                {
+                                    "errorMsg": "Max length of password is 8192",
+                                    "minLength": 0,
+                                    "maxLength": 8192,
+                                    "type": "string"
+                                }
+                            ],
+                            "field": "dynatrace_tags",
+                            "label": "Dynatrace Tags",
+                            "encrypted": false,
+                            "type": "text"
+                        },
+                        {
+                            "help": "Entity Filter",
+                            "required": false,
+                            "validators": [
+                                {
+                                    "errorMsg": "Max length of password is 8192",
+                                    "minLength": 0,
+                                    "maxLength": 8192,
+                                    "type": "string"
+                                }
+                            ],
+                            "field": "dynatrace_entities",
+                            "label": "Dynatrace Entities",
                             "encrypted": false,
                             "type": "text"
                         },

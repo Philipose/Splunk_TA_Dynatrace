@@ -61,6 +61,8 @@ def collect_events(helper, ew):
     opt_dynatrace_metric    = helper.get_arg('dynatrace_metric')
     opt_aggregation_type    = helper.get_arg('aggregation_type')
     opt_dynatrace_collection_interval = helper.get_arg('dynatrace_collection_interval')
+    opt_dynatrace_tags = helper.get_arg('dynatrace_tags')
+    opt_dynatrace_entities = helper.get_arg('dynatrace_entities')
 
     headers     = {'Authorization': 'Api-Token {}'.format(opt_dynatrace_api_token),
                     'version':'Splunk TA 1.0.3'}
@@ -70,6 +72,14 @@ def collect_events(helper, ew):
                     'aggregationType': opt_aggregation_type, 
                     'timeseriesId' : opt_dynatrace_metric 
                   }
+
+    if opt_dynatrace_tags:
+        parameters ['tag'] = opt_dynatrace_tags.split("&")
+
+    if opt_dynatrace_entities:
+        parameters ['entity'] = opt_dynatrace_entities.split("&")
+
+        
     hecTime = 0
 
     response = helper.send_http_request(api_url, "GET", headers=headers,  parameters=parameters, payload=None, cookies=None, verify=verify_ssl, cert=None, timeout=None, use_proxy=True)

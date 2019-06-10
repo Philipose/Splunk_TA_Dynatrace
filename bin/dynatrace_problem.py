@@ -58,6 +58,10 @@ class ModInputdynatrace_problem(modinput_wrapper.base_modinput.BaseModInput):
                                          description="Relative timeframe passed to Dynatrace API. Timeframe of data to be collected at each polling interval.",
                                          required_on_create=True,
                                          required_on_edit=False))
+        scheme.add_argument(smi.Argument("dynatrace_tags", title="Tags",
+                                         description="Returns entities must have all provided tags (Seperated by ampersand)",
+                                         required_on_create=False,
+                                         required_on_edit=False))
         scheme.add_argument(smi.Argument("ssl_certificate_verification", title="SSL Certificate Verification",
                                          description="",
                                          required_on_create=False,

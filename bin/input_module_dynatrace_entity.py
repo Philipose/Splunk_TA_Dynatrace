@@ -46,19 +46,30 @@ def collect_events(helper, ew):
     opt_dynatrace_collection_interval = helper.get_arg('dynatrace_collection_interval')
     opt_dynatrace_entity_endpoints = helper.get_arg('entity_endpoints')
     opt_dynatrace_management_zone = helper.get_arg('dynatrace_management_zone')
+    opt_dynatrace_tags = helper.get_arg('dynatrace_tags')
+    opt_dynatrace_entities = helper.get_arg('dynatrace_entities')
     
     time_offset  = int(opt_dynatrace_collection_interval) * 1000
     current_time = int(round(time.time() * 1000))
     offset_time  = current_time - time_offset
 
 
+
     headers     = {'Authorization': 'Api-Token {}'.format(opt_dynatrace_api_token),
                     'version':'Splunk TA 1.0.3'}
     api_url     = opt_dynatrace_tenant + '/api/v1/entity/'
     parameters  = { 'startTimestamp':str(offset_time), 
-                     'endTimestamp': str(current_time),
-                     'managementZone': str(opt_dynatrace_management_zone)
+                     'endTimestamp': str(current_time)
                    }
+
+    if (opt_dynatrace_management_zone):
+        parameters ['managementZone'] = str(opt_dynatrace_management_zone)
+
+    if opt_dynatrace_tags:
+        parameters ['tag'] = opt_dynatrace_tags.split("&")
+
+    if opt_dynatrace_entities:
+        parameters ['entity'] = opt_dynatrace_entities.split("&")
 
     for endpoint in opt_dynatrace_entity_endpoints:
         response = helper.send_http_request(api_url + endpoint , "GET", headers=headers,  parameters=parameters, payload=None, cookies=None, verify=verify_ssl, cert=None, timeout=None, use_proxy=True)

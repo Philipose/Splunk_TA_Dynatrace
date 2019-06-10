@@ -58,6 +58,8 @@ def collect_events(helper, ew):
     
     opt_dynatrace_api_token           = helper.get_arg('dynatrace_api_token')
     opt_dynatrace_collection_interval = helper.get_arg('dynatrace_collection_interval')
+    opt_dynatrace_tags = helper.get_arg('dynatrace_tags')
+    opt_dynatrace_entities = helper.get_arg('dynatrace_entities')
 
     headers     = {'Authorization': 'Api-Token {}'.format(opt_dynatrace_api_token),
                     'version':'Splunk TA 1.0.3'}
@@ -67,6 +69,11 @@ def collect_events(helper, ew):
                     'aggregationType': '', 
                     'timeseriesId': '' 
                   }
+    if opt_dynatrace_tags:
+        parameters ['tag'] = opt_dynatrace_tags.split("&")
+
+    if opt_dynatrace_entities:
+        parameters ['entity'] = opt_dynatrace_entities.split("&")
 
     COUNT    = 'COUNT'
     AVERAGE  = 'AVG'
