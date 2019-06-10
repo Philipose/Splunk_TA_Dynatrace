@@ -58,6 +58,10 @@ class ModInputdynatrace_entity(modinput_wrapper.base_modinput.BaseModInput):
                                          description="Relative timeframe passed to Dynatrace API. Timeframe of data to be collected at each polling interval.",
                                          required_on_create=True,
                                          required_on_edit=False))
+        scheme.add_argument(smi.Argument("dynatrace_management_zone", title="Management Zone",
+                                         description="Filter Data by Management Zones.",
+                                         required_on_create=False,
+                                         required_on_edit=False))
         scheme.add_argument(smi.Argument("entity_endpoints", title="Entity Endpoints",
                                          description="",
                                          required_on_create=True,

@@ -45,6 +45,7 @@ def collect_events(helper, ew):
     opt_dynatrace_api_token = helper.get_arg('dynatrace_api_token')
     opt_dynatrace_collection_interval = helper.get_arg('dynatrace_collection_interval')
     opt_dynatrace_entity_endpoints = helper.get_arg('entity_endpoints')
+    opt_dynatrace_management_zone = helper.get_arg('dynatrace_management_zone')
     
     time_offset  = int(opt_dynatrace_collection_interval) * 1000
     current_time = int(round(time.time() * 1000))
@@ -55,7 +56,8 @@ def collect_events(helper, ew):
                     'version':'Splunk TA 1.0.3'}
     api_url     = opt_dynatrace_tenant + '/api/v1/entity/'
     parameters  = { 'startTimestamp':str(offset_time), 
-                     'endTimestamp': str(current_time)
+                     'endTimestamp': str(current_time),
+                     'managementZone': str(opt_dynatrace_management_zone)
                    }
 
     for endpoint in opt_dynatrace_entity_endpoints:

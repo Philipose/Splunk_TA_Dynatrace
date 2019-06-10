@@ -61,6 +61,13 @@ fields = [
         validator=None
     ), 
     field.RestField(
+        'dynatrace_management_zone',
+        required=False,
+        encrypted=False,
+        default='',
+        validator=None
+    ),
+    field.RestField(
         'entity_endpoints',
         required=True,
         encrypted=False,

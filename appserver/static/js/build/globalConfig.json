@@ -701,6 +701,22 @@
                             "type": "text"
                         }, 
                         {
+                            "help": "Management Zone Filter",
+                            "required": false,
+                            "validators": [
+                                {
+                                    "errorMsg": "Max length of password is 8192",
+                                    "minLength": 0,
+                                    "maxLength": 8192,
+                                    "type": "string"
+                                }
+                            ],
+                            "field": "dynatrace_management_zone",
+                            "label": "Dynatrace Management Zone",
+                            "encrypted": false,
+                            "type": "text"
+                        },
+                        {
                             "help": "Relative timeframe passed to Dynatrace API. Timeframe of data to be collected at each polling interval.", 
                             "field": "dynatrace_collection_interval", 
                             "options": {
