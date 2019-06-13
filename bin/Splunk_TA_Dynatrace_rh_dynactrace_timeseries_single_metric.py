@@ -59,6 +59,26 @@ fields = [
         encrypted=False,
         default='5mins',
         validator=None
+    ),
+     field.RestField(
+        'dynatrace_tags',
+        required=False,
+        encrypted=False,
+        default='',
+        validator=validator.String(
+            max_len=8192, 
+            min_len=0, 
+        )
+    ),
+    field.RestField(
+        'dynatrace_entities',
+        required=False,
+        encrypted=False,
+        default='',
+        validator=validator.String(
+            max_len=8192, 
+            min_len=0, 
+        )
     ), 
     field.RestField(
         'dynatrace_metric',
